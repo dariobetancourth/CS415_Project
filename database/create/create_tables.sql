@@ -1,59 +1,71 @@
-CREATE TABLE
-    user (
-        user_id INT PRIMARY KEY AUTO_INCREMENT,
-        first_name VARCHAR(255),
-        last_name VARCHAR(255),
-        email VARCHAR(255),
-        pass_word VARCHAR(255),
-        created_date DATETIME,
-        is_active BOOLEAN,
-        username VARCHAR(255)
-    );
+CREATE TABLE User (
+    user_id INT NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(30) NOT NULL,
+    email VARCHAR(40) NOT NULL,
+    pass_word VARCHAR(40) NOT NULL,
+    created_date DATETIME,
+    is_active BOOLEAN,
+    last_login DATETIME;
+    PRIMARY KEY (user_id),
+    UNIQUE (email)
+);
 
-CREATE TABLE
-    user_address (
-        address_id INT PRIMARY KEY AUTO_INCREMENT,
-        user_id INT,
-        street_address VARCHAR(255),
-        city VARCHAR(255),
-        st VARCHAR(255),
-        zip_code VARCHAR(255),
-        country VARCHAR(255),
-        CONSTRAINT fk_user_address_user_id FOREIGN KEY (user_id) REFERENCES user (user_id)
-    );
+CREATE TABLE AddressType (
+    address_type_id INT NOT NULL AUTO_INCREMENT,
+    address_type VARCHAR(10) NOT NULL,
+    PRIMARY KEY (address_type_id)
+);
 
-CREATE TABLE
-    driver_license (
-        driver_license_id INT PRIMARY KEY AUTO_INCREMENT,
-        user_id INT,
-        driver_license_number INT,
-        st VARCHAR(255),
-        expiration_date DATE,
-        issue_date DATE,
-        CONSTRAINT fk_driver_license_user_id FOREIGN KEY (user_id) REFERENCES user (user_id)
-    );
+CREATE TABLE UserAddress (
+    user_address_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    address_type_id INT NOT NULL,
+    address_1 VARCHAR(30),
+    address_2 VARCHAR(30),
+    city VARCHAR(25),
+    st VARCHAR(2),
+    zip VARCHAR(10),
+    country VARCHAR(30),
+    PRIMARY KEY (user_address_id),
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (address_type_id) REFERENCES AddressType(address_type_id)
+);
 
-CREATE TABLE
-    vehicle (
-        vehicle_id INT PRIMARY KEY AUTO_INCREMENT,
-        user_id INT,
-        vehicle_type VARCHAR(255),
-        make VARCHAR(255),
-        model VARCHAR(255),
-        production_year YEAR,
-        color VARCHAR(255),
-        CONSTRAINT fk_vehicle_user_id FOREIGN KEY (user_id) REFERENCES user (user_id)
-    );
+CREATE TABLE UserInfo (
+    user_info_id INT NOT NULL AUTO_INCREMENT,
+    user_id INT NOT NULL,
+    profile_bio VARCHAR(500),
+    profile_picture VARCHAR(100),
+    modified_date DATETIME,
+    created_date DATETIME,
+    PRIMARY KEY (user_info_id),
+    FOREIGN KEY (user_id) REFERENCES User(user_id)
+);
 
-CREATE TABLE
-    parking_info (
-        parking_id INT PRIMARY KEY AUTO_INCREMENT,
-        vehicle_id INT,
-        floor INT NOT NULL,
-        section VARCHAR(255) NOT NULL,
-        bay_number INT NOT NULL,
-        day_parked DATE NOT NULL,
-        length_days INT NOT NULL,
-        pick_up_time TIME NOT NULL,
-        CONSTRAINT fk_parking_info_vehicle_id FOREIGN KEY (vehicle_id) REFERENCES vehicle (vehicle_id)
-    );
+CREATE TABLE PhoneType (
+    phone_type_id INT NOT NULL AUTO_INCREMENT,
+    phone_type VARCHAR(10) NOT NULL,
+    PRIMARY KEY (phone_type_id)
+);
+
+CREATE TABLE UserPhone (
+    user_phone_id INT NOT NULL AUTO_INCREMENT,
+    phone_type_id INT NOT NULL,
+    user_id INT NOT NULL,
+    phone_number VARCHAR(10),
+    created_date DATETIME,
+    is_active BOOLEAN,
+    PRIMARY KEY (user_phone_id),
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (phone_type_id) REFERENCES PhoneType(phone_type_id)
+);
+
+CREATE TABLE PageData (
+    page_data_id INT NOT NULL AUTO_INCREMENT,
+    page_name VARCHAR(25) NOT NULL,
+    page_title VARCHAR(25) NOT NULL,
+    page_description VARCHAR(150) NOT NULL,
+    page_picture VARCHAR(100),
+    PRIMARY KEY (page_data_id)
+);
