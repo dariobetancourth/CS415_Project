@@ -8,7 +8,7 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 class PageDataSerializer(serializers.ModelSerializer):
     class Meta:
-        model= Pagedata
+        model= PageData
         fields='__all__'
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -30,7 +30,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class AddressTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Addresstype
+        model=AddressType
         depth=1
         fields = '__all__'
 
@@ -38,27 +38,27 @@ class AddressTypeSerializer(serializers.ModelSerializer):
 class AddressSerializerGet(serializers.ModelSerializer):
     address_type = AddressTypeSerializer(read_only=True)
     class Meta:
-        model = Useraddress
+        model = UserAddress
         # depth = 1
         fields = '__all__'
 
 
 class AddressSerializerPost(serializers.ModelSerializer):
     class Meta:
-        model = Useraddress
+        model = UserAddress
         fields = '__all__'
 
 
 class PhoneTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Phonetype
+        model=PhoneType
         depth=1
         fields = '__all__'
 
 
 class AddressTypeSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Addresstype
+        model=AddressType
         depth=1
         fields = '__all__'
 
@@ -66,17 +66,17 @@ class AddressTypeSerializer(serializers.ModelSerializer):
 class PhoneSerializerGet(serializers.ModelSerializer):
     phone_type = PhoneTypeSerializer(read_only=True)
     class Meta:
-        model=Userphone
+        model=UserPhone
         fields = '__all__'
 
 
 class PhoneSerializerPost(serializers.ModelSerializer):
     class Meta:
-        model=Userphone
+        model=UserPhone
         fields = '__all__'
 
 
 class UserinfoSerializer(serializers.ModelSerializer):
     class Meta:
-        model=Userinfo
+        model=UserInfo
         fields='__all__'
