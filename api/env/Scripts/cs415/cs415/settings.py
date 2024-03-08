@@ -31,12 +31,9 @@ CORS_ALLOWED_ORIGIN = ['*']
 CORS_ORIGIN_ALLOW_ALL = True
 
 # Application definition
-JWT_AUTH = {
-    'JWT_SECRET_KEY': SECRET_KEY,
-    'JWT_ALGORITHM': 'HS256',
-    'JWT_ALLOW_REFRESH': True,
-    'JWT_EXPIRATION_DELTA': timedelta(days=1),  # Adjust the expiration time as needed
-}
+JWT_AUTH = True
+
+
 INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
