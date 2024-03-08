@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from cs415.models import User, Useraddress, Userinfo, Userphone, Phonetype, Pagedata, Addresstype
+from cs415.models import User, UserAddress, UserInfo, UserPhone, PhoneType, PageData, AddressType
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:

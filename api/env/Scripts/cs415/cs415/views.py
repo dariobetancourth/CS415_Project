@@ -2,7 +2,7 @@ import datetime
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from cs415.models import User, Useraddress, Userphone, Phonetype, Userinfo, Pagedata, Addresstype
+from cs415.models import User, UserAddress, UserPhone, PhoneType, UserInfo, PageData, AddressType
 from cs415.serializers import UserSerializer, AddressSerializerPost, AddressSerializerGet, PhoneSerializerGet, PhoneSerializerPost
 from cs415.serializers import PhoneTypeSerializer, UserinfoSerializer, PageDataSerializer, AddressTypeSerializer
 from cs415.settings import JWT_AUTH
