@@ -16,7 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from cs415 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', views.Login.as_view()),
+    path('users/', views.UserAPIView.as_view()),
+    path('addresses/', views.AddressAPIView.as_view()),
+    path('phones/', views.PhoneAPIView.as_view()),
+    path('phone-types/', views.PhoneTypeAPIView.as_view()),
+    path('address-types/', views.AddressTypeAPIView.as_view()),
+    path('user-infos/', views.UserInfoAPIView.as_view()),
+    path('pages/', views.PageDataAPIView.as_view()),
+    path('users/user/<int:id>', views.GetSingleUserAPIView.as_view()),
+    path('addresses/user/<int:id>', views.UserAddressAPIView.as_view()),
+    path('phones/user/<int:id>', views.UserPhoneAPIView.as_view()),
+    path('user-infos/user/<int:id>', views.GetSingleUserInfoAPIView.as_view()),
+    path('pages/page/<int:id>', views.GetSinglePageDataAPIView.as_view()),
 ]
