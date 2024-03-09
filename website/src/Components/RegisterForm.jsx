@@ -21,7 +21,7 @@ export const RegisterForm = (props) => {
             pass_word: pass
         })
         try {
-            fetch(process.env.REACT_APP_API_URL_BASE + '/users/',{
+            fetch('http://localhost:3001/users/',{
             method: 'POST',
             body: payload,
             headers:{
