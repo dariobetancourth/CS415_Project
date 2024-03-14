@@ -21,7 +21,7 @@ const LoginForm = (props) => {
           password: pass
       })
       try {
-          fetch('http://localhost:3001/login/',{
+          fetch('http://localhost:3000/login/',{
           method: 'POST',
           body: payload,
           headers:{

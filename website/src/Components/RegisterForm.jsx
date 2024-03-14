@@ -21,7 +21,7 @@ export const RegisterForm = (props) => {
             pass_word: pass
         })
         try {
-            fetch('http://localhost:3001/users/',{
+            fetch('http://localhost:3000/users/',{
             method: 'POST',
             body: payload,
             headers:{
